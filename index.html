@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick & Morty API</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8">
+    <!-- Contenedor principal de la aplicación -->
+    <div class="w-full max-w-4xl bg-white shadow-lg rounded-xl overflow-hidden p-6">
+
+        <!-- Encabezado de la aplicación -->
+        <header class="bg-green-500 rounded-xl p-6 mb-8 text-center shadow-md">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Personajes de Rick & Morty</h1>
+        </header>
+
+        <!-- Sección de botones principales -->
+        <section class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
+            <button id="getAllCharacters" class="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                Obtener Todos los Personajes
+            </button>
+        </section>
+
+        <!-- Sección de filtros -->
+        <section class="bg-gray-50 p-6 rounded-xl shadow-inner mb-8">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-6 text-center">Filtrar Personajes</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                <input type="text" id="nameFilter" placeholder="Nombre"
+                       class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition duration-200">
+                <input type="text" id="statusFilter" placeholder="Estado (alive, dead, unknown)"
+                       class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition duration-200">
+                <input type="text" id="speciesFilter" placeholder="Especie"
+                       class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition duration-200">
+                <input type="text" id="typeFilter" placeholder="Tipo"
+                       class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition duration-200">
+                <input type="text" id="genderFilter" placeholder="Género (female, male, genderless, unknown)"
+                       class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition duration-200">
+            </div>
+            <button id="applyFilters" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                Buscar con Filtros
+            </button>
+        </section>
+
+        <!-- Área de mensajes de error -->
+        <div id="errorMessage" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative hidden mb-6" role="alert" style="display: none;">
+            <strong class="font-bold">Error:</strong>
+            <span class="block sm:inline" id="errorText"></span>
+        </div>
+
+        <!-- Área de visualización de resultados -->
+        <section id="results" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></section>
+
+        <!-- Controles de paginación -->
+        <div id="paginationControls" class="flex justify-center items-center space-x-4 mt-8">
+            <button id="prevPageBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed">
+                Anterior
+            </button>
+            <span id="pageInfo" class="text-gray-700 font-medium"></span>
+            <button id="nextPageBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed">
+                Siguiente
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Enlace a tu archivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
